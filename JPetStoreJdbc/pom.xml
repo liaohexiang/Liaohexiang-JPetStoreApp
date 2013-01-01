@@ -8,9 +8,7 @@
 		<groupId>org.tony.com</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.tony.com</groupId>
 	<artifactId>JPetStoreJdbc</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>JPetStoreJdbc</name>
 	<url>http://maven.apache.org</url>
 	<properties>

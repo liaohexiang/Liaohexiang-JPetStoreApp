@@ -8,9 +8,7 @@
 		<groupId>org.tony.com</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.tony.com</groupId>
 	<artifactId>JPetStoreRest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>JPetStoreRest</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -34,4 +32,28 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <id>default-testCompile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+		</plugins>
+	</build>
 </project>
