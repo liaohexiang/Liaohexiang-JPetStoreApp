@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/Accountvalidation")
 public class AccountValidationController {
+	
 	@Autowired
 	private AccountValidationDao accountDao;
 	

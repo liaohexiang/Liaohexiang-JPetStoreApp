@@ -20,10 +20,9 @@
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
-	<!-- <bean id="accountDao" class="org.springframework.samples.jpetstore.dao.jdbc.JdbcAccountDaoImpl">
-		<qualifier value="account"/>
+	<bean id="accountDao" class="org.springframework.samples.jpetstore.dao.jdbc.JdbcAccountDaoImpl">
 		<property name="dataSource" ref="dataSource"/>	
-	</bean> -->
+	</bean>
 	<bean class="org.springframework.samples.jpetstore.dao.jdbc.JdbcAccountValidationDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>

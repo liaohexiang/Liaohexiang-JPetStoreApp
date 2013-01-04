@@ -18,11 +18,10 @@ import org.springframework.samples.jpetstore.dao.AccountDao;
 import org.springframework.samples.jpetstore.domain.Account;
 import org.springframework.stereotype.Component;
 
-@Component
-@Qualifier("account")
+
 public class JdbcAccountDaoImpl extends NamedParameterJdbcDaoSupport implements AccountDao {
 
-	@Override
+	
 	public Account getAccount(String username) throws DataAccessException {
 		String sqlStr = "select signon.username as username,signon.password as password,account.email," +
 		"account.firstName,account.lastName," +
@@ -39,7 +38,7 @@ public class JdbcAccountDaoImpl extends NamedParameterJdbcDaoSupport implements 
 		return acct;
 	}
 
-	@Override
+	
 	public Account getAccount(String username, String password)
 			throws DataAccessException {
 		String sqlStr = "select signon.username as username,signon.password as password,account.email," +
@@ -61,14 +60,12 @@ public class JdbcAccountDaoImpl extends NamedParameterJdbcDaoSupport implements 
 		return acct;
 	}
 
-	@Override
+	
 	public void insertAccount(Account account) throws DataAccessException {
 		String sqlStr = " insert into account (email, firstname, lastname, status, addr1, addr2, city, state, zip, country, phone, userid) values (:email, :firstName, :lastName, :status, :address1, :address2, :city, :state, :zip, :country, :phone, :username)";
 		this.getNamedParameterJdbcTemplate().update(sqlStr, new BeanPropertySqlParameterSource(account));
 	}
 
-	@Override
-	//@Transactional(propagation=Propagation.REQUIRED)
 	public void updateAccount(Account account) throws DataAccessException {
 		String sqlStr = "update account set email = :email, firstname = :firstName, lastname = :lastName, status = :status, addr1 = :address1, addr2 = :address2, city = :city, state = :state, zip = :zip, country = :country, phone = :phone where userid = :username";
 		SqlParameterSource paramSource = new BeanPropertySqlParameterSource(account);
@@ -93,21 +90,21 @@ public class JdbcAccountDaoImpl extends NamedParameterJdbcDaoSupport implements 
 		String sqlStr ="update account set firstname=?, lastname=? where userid=?";
 		return this.getJdbcTemplate().batchUpdate(sqlStr, new BatchPreparedStatementSetter() {
 			
-			@Override
+			
 			public void setValues(PreparedStatement ps, int i) throws SQLException {
 				ps.setString(1, ((Account)list.get(i)).getFirstName());
 				ps.setString(2, ((Account)list.get(i)).getLastName());
 				ps.setString(3, ((Account)list.get(i)).getUsername());
 			}
 			
-			@Override
+			
 			public int getBatchSize() {
 				return list.size();
 			}
 		});
 	}
 
-	@Override
+	
 	public List getUsernameList() throws DataAccessException {
 		String sqlStr = "select firstname as firstName,lastname as lastName,userid as username from account";
 		return this.getJdbcTemplate().query(sqlStr, new BeanPropertyRowMapper(Account.class));

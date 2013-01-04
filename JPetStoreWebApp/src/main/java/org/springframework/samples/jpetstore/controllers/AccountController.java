@@ -30,7 +30,6 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 public class AccountController  { 
 
 	@Autowired
-	@Qualifier("account")
 	private AccountDao accountDao;
 	
 	
@@ -68,9 +67,5 @@ public class AccountController  {
 		//Map<String, Object> map = new HashMap<String, Object>();
 		//map.put("object", account);
 		return new ModelAndView("xml_account_info", "object",account);
-	}
-	@InitBinder
-	public void initBinder(WebDataBinder binder){
-		
 	}
 }
